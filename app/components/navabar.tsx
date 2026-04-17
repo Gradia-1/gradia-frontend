@@ -29,41 +29,41 @@ export default function Navbar() {
   const [currentLang, setCurrentLang] = useState(languages[0]);
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-10 py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/gradia-bg-photo.png"
+            src="/logo.png"
             alt="Gradia logo"
             width={40}
             height={40}
           />
-          <span className="text-xl font-bold text-[#7C3AED]">
+          <span className="text-xl font-bold">
             Gradia
           </span>
         </Link>
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex items-center gap-8 text-sm font-bold text-black">
-          
+
           <li>
-            <Link href="" className="hover:text-[#7C3AED] transition-colors">
+            <Link href="" className="hover:text-[#22C55E] transition-colors">
               About
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-[#7C3AED] transition-colors">
+            <Link href="" className="hover:text-[#22C55E] transition-colors">
               Packages
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-[#7C3AED] transition-colors">
+            <Link href="" className="hover:text-[#22C55E] transition-colors">
               Pricing
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-[#7C3AED] transition-colors">
+            <Link href="" className="hover:text-[#22C55E] transition-colors">
               Contact
             </Link>
           </li>
@@ -75,7 +75,7 @@ export default function Navbar() {
           <div className="relative" ref={langRef}>
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex items-center gap-1.5 text-sm font-medium text-black hover:text-[#7C3AED] transition-colors cursor-pointer border border-gray-200 rounded-full px-3 py-1.5 hover:border-[#7C3AED]"
+              className="flex items-center gap-1.5 text-sm font-medium text-black hover:text-[#22C55E] transition-colors cursor-pointer bg-white border border-gray-200 rounded-full px-3 py-1.5 hover:border-[#22C55E]"
             >
               <i className="bi bi-globe2 text-base"></i>
               <span>{currentLang.label}</span>
@@ -91,7 +91,7 @@ export default function Navbar() {
                       setLangOpen(false);
                     }}
                     className={`w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-[#f6f1fd] transition-colors ${
-                      currentLang.code === lang.code ? "text-[#7C3AED] font-bold" : "text-black"
+                      currentLang.code === lang.code ? "text-[#22C55E] font-bold" : "text-black"
                     }`}
                   >
                     {lang.label}
@@ -103,13 +103,13 @@ export default function Navbar() {
 
           <Link
             href="/login"
-            className="text-sm font-bold text-black hover:text-[#7C3AED] transition-colors"
+            className="text-sm font-bold text-black hover:text-[#22C55E] transition-colors"
           >
             Log In
           </Link>
           <Link
             href="/signup"
-            className="text-sm font-bold text-white bg-[#7C3AED] hover:bg-[#6D28D9] px-6 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all"
+            className="text-sm font-bold text-white bg-[#22C55E] hover:bg-[#16A34A] px-6 py-2.5 rounded-full transition-all"
           >
             Sign Up
           </Link>
@@ -117,7 +117,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-gray-600"
+          className="md:hidden text-black"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -127,26 +127,26 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t px-6 py-4">
-          <ul className="flex flex-col gap-4 text-sm font-medium text-gray-600">
-            
+        <div className="md:hidden bg-white border-t border-gray-100 px-6 py-4">
+          <ul className="flex flex-col gap-4 text-sm font-medium text-gray-700">
+
             <li>
-              <Link href="" className="block hover:text-[#7C3AED]" onClick={() => setMenuOpen(false)}>
+              <Link href="" className="block hover:text-[#22C55E]" onClick={() => setMenuOpen(false)}>
                 About
               </Link>
             </li>
             <li>
-              <Link href="" className="block hover:text-[#7C3AED]" onClick={() => setMenuOpen(false)}>
+              <Link href="" className="block hover:text-[#22C55E]" onClick={() => setMenuOpen(false)}>
                 Packages
               </Link>
             </li>
             <li>
-              <Link href="" className="block hover:text-[#7C3AED]" onClick={() => setMenuOpen(false)}>
+              <Link href="" className="block hover:text-[#22C55E]" onClick={() => setMenuOpen(false)}>
                 Pricing
               </Link>
             </li>
             <li>
-              <Link href="" className="block hover:text-[#7C3AED]" onClick={() => setMenuOpen(false)}>
+              <Link href="" className="block hover:text-[#22C55E]" onClick={() => setMenuOpen(false)}>
                 Contact
               </Link>
             </li>
@@ -154,14 +154,14 @@ export default function Navbar() {
           <div className="mt-4 flex flex-col gap-3">
             <Link
               href="/login"
-              className="text-sm font-medium text-gray-600 hover:text-[#7C3AED]"
+              className="text-sm font-medium text-gray-700 hover:text-[#22C55E]"
               onClick={() => setMenuOpen(false)}
             >
               Log In
             </Link>
             <Link
               href="/signup"
-              className="text-sm font-bold text-center text-white bg-[#7C3AED] hover:bg-[#6D28D9] px-5 py-2.5 rounded-full transition-colors"
+              className="text-sm font-bold text-center text-white bg-[#22C55E] hover:bg-[#16A34A] px-5 py-2.5 rounded-full transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               Sign Up
