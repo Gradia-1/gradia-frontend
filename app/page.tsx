@@ -211,6 +211,275 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Pricing */}
+      <section className="relative bg-white py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-10">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="inline-flex items-center gap-2 bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#16A34A] text-xs font-bold px-3 py-1.5 rounded-full">
+              <i className="bi bi-tag-fill"></i>
+              Simple, transparent pricing
+            </span>
+            <h2 className="mt-5 text-3xl md:text-4xl lg:text-5xl font-extrabold text-black leading-tight">
+              Choose the package that matches your growth stage
+            </h2>
+            <p className="mt-4 text-base md:text-lg text-gray-600">
+              Simple SaaS pricing with room to scale as your school expands its
+              operations, users, and campuses.
+            </p>
+          </div>
+
+          <div className="mt-14 grid md:grid-cols-3 gap-6 items-start">
+            {/* Basic */}
+            <div className="bg-white rounded-2xl border border-gray-200 p-7 flex flex-col">
+              <h3 className="text-2xl font-extrabold text-black">Basic</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                For small schools starting to digitize operations.
+              </p>
+              <div className="mt-6 flex items-baseline gap-1.5">
+                <span className="text-5xl font-extrabold text-black">$29</span>
+                <span className="text-sm text-gray-500">/ month</span>
+              </div>
+              <div className="my-6 h-px bg-gray-200"></div>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">What&apos;s included</p>
+              <ul className="mt-4 space-y-3 text-sm text-gray-700 flex-1">
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Up to 500 students
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Student records &amp; attendance
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Basic billing tools
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Parent communication
+                </li>
+              </ul>
+              <Link
+                href="/signup"
+                className="mt-7 w-full inline-flex items-center justify-center gap-2 text-sm font-bold text-black bg-white border border-gray-200 hover:border-[#22C55E] px-5 py-3 rounded-full transition-colors"
+              >
+                Choose Basic
+              </Link>
+            </div>
+
+            {/* Standard — highlighted */}
+            <div className="relative bg-white rounded-2xl border-2 border-[#22C55E] p-7 md:-translate-y-4 flex flex-col">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold uppercase tracking-widest bg-[#22C55E] text-white px-3 py-1 rounded-full">
+                Most loved
+              </span>
+              <h3 className="text-2xl font-extrabold text-black">Standard</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                For growing schools that need more control and visibility.
+              </p>
+              <div className="mt-6 flex items-baseline gap-1.5">
+                <span className="text-5xl font-extrabold text-black">$79</span>
+                <span className="text-sm text-gray-500">/ month</span>
+              </div>
+              <div className="my-6 h-px bg-[#22C55E]/20"></div>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                Everything in Basic, plus
+              </p>
+              <ul className="mt-4 space-y-3 text-sm text-gray-700 flex-1">
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  LMS, grading &amp; exams
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Advanced billing &amp; mobile money
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Analytics dashboard
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Admin, teacher, student &amp; parent portals
+                </li>
+              </ul>
+              <Link
+                href="/signup"
+                className="mt-7 w-full inline-flex items-center justify-center gap-2 text-sm font-bold text-white bg-[#22C55E] hover:bg-[#16A34A] px-5 py-3 rounded-full transition-colors"
+              >
+                Start Free Trial
+              </Link>
+            </div>
+
+            {/* Premium */}
+            <div className="bg-white rounded-2xl border border-gray-200 p-7 flex flex-col">
+              <h3 className="text-2xl font-extrabold text-black">Premium</h3>
+              <p className="mt-2 text-sm text-gray-500">
+                For multi-school networks and ambitious operations.
+              </p>
+              <div className="mt-6 flex items-baseline gap-1.5">
+                <span className="text-5xl font-extrabold text-black">Custom</span>
+              </div>
+              <p className="mt-1 text-xs text-gray-500">Tailored to your network size</p>
+              <div className="my-6 h-px bg-gray-200"></div>
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                Everything in Standard, plus
+              </p>
+              <ul className="mt-4 space-y-3 text-sm text-gray-700 flex-1">
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Multi-school management
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  AI insights &amp; executive reporting
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Priority onboarding
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <i className="bi bi-check-circle-fill text-[#22C55E] mt-0.5"></i>
+                  Custom integrations
+                </li>
+              </ul>
+              <Link
+                href="/contact"
+                className="mt-7 w-full inline-flex items-center justify-center gap-2 text-sm font-bold text-black bg-white border border-gray-200 hover:border-[#22C55E] px-5 py-3 rounded-full transition-colors"
+              >
+                Contact Sales
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="relative bg-white py-20 md:py-28">
+        <div className="max-w-7xl mx-auto px-10">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#16A34A] text-xs font-bold px-3 py-1.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+              Trusted by forward-thinking schools
+            </span>
+            <h2 className="mt-5 text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-[1.1]">
+              What school leaders are saying
+            </h2>
+            <p className="mt-5 text-base text-gray-600 max-w-xl">
+              Short, credible social proof that highlights operational value,
+              transparency, and improved school-parent relationships.
+            </p>
+          </div>
+
+          <div className="mt-14 grid md:grid-cols-3 gap-6">
+            {/* Testimonial 1 */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-7">
+              <p className="text-sm text-gray-700 leading-relaxed">
+                &ldquo;Gradia helped us move from manual reporting to real-time
+                visibility. We now track attendance, fees, and academic
+                performance from a single dashboard.&rdquo;
+              </p>
+              <div className="mt-6 flex items-center gap-3">
+                <Image
+                  src="https://i.pinimg.com/736x/78/a4/90/78a49037be202bfa335fef1cf9e3718f.jpg"
+                  alt="Pascal MUNEZA"
+                  width={44}
+                  height={44}
+                  className="w-11 h-11 rounded-full object-cover border border-[#22C55E]/30"
+                />
+                <div>
+                  <p className="text-sm font-bold text-black">Pascal MUNEZA</p>
+                  <p className="text-xs text-gray-500">Principal, Green Hills Academy</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 2 */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-7">
+              <p className="text-sm text-gray-700 leading-relaxed">
+                &ldquo;Fee collection became smoother almost immediately.
+                Parents appreciate the transparency, and our admin team spends
+                far less time following up manually.&rdquo;
+              </p>
+              <div className="mt-6 flex items-center gap-3">
+                <Image
+                  src="https://i.pinimg.com/736x/85/0e/cf/850ecf4212cb66a5ce94a94132b530ca.jpg"
+                  alt="Pacifique HARERIMANA"
+                  width={44}
+                  height={44}
+                  className="w-11 h-11 rounded-full object-cover border border-[#22C55E]/30"
+                />
+                <div>
+                  <p className="text-sm font-bold text-black">Pacifique HARERIMANA</p>
+                  <p className="text-xs text-gray-500">Administrator, Crestview Schools</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Testimonial 3 */}
+            <div className="bg-white border border-gray-200 rounded-2xl p-7">
+              <p className="text-sm text-gray-700 leading-relaxed">
+                &ldquo;The role-based portals made adoption easy. Teachers,
+                parents, and school leaders each know exactly where to go and
+                what to do.&rdquo;
+              </p>
+              <div className="mt-6 flex items-center gap-3">
+                <Image
+                  src="https://i.pinimg.com/736x/a7/78/1b/a7781b8c72004ae4f9c014cfeeffd005.jpg"
+                  alt="Octave BYIRINGIRO"
+                  width={44}
+                  height={44}
+                  className="w-11 h-11 rounded-full object-cover border border-[#22C55E]/30"
+                />
+                <div>
+                  <p className="text-sm font-bold text-black">Octave BYIRINGIRO</p>
+                  <p className="text-xs text-gray-500">Director, Sunrise College</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="relative bg-white pb-20 md:pb-28 pt-20 md:pt-28">
+        <div className="max-w-7xl mx-auto px-10">
+          <div className="relative overflow-hidden rounded-3xl bg-[#0a1a0f] px-8 py-16 md:px-16 md:py-20">
+            <div className="relative max-w-2xl">
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+                Ready to modernize your school operations?
+              </span>
+
+              <h2 className="mt-5 text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1]">
+                Transform your school today
+              </h2>
+
+              <p className="mt-5 text-base md:text-lg text-gray-300 max-w-lg">
+                Book a tailored demo or start your free trial to see how Gradia
+                can simplify management, improve communication, and unlock
+                better decisions.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/demo"
+                  className="inline-flex items-center gap-2 text-sm md:text-base font-bold text-white bg-[#22C55E] hover:bg-[#16A34A] px-6 py-3 rounded-full transition-colors"
+                >
+                  Request a Demo
+                  <i className="bi bi-arrow-right"></i>
+                </Link>
+                <Link
+                  href="/signup"
+                  className="inline-flex items-center gap-2 text-sm md:text-base font-bold text-white bg-transparent border border-white/30 hover:border-white hover:bg-white/10 px-6 py-3 rounded-full transition-colors"
+                >
+                  Start Free Trial
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
