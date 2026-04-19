@@ -102,7 +102,7 @@ export default function Navbar() {
           </div>
 
           <Link
-            href="/login"
+            href="/root/auth/login"
             className="text-sm font-bold text-[#1A1A1A] hover:text-[#1F7A4D] transition-colors"
           >
             Log In
@@ -153,7 +153,7 @@ export default function Navbar() {
           </ul>
           <div className="mt-4 flex flex-col gap-3">
             <Link
-              href="/login"
+              href="/root/auth/login"
               className="text-sm font-medium text-gray-700 hover:text-[#1F7A4D]"
               onClick={() => setMenuOpen(false)}
             >

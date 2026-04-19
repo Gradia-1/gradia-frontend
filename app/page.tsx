@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "./components/navabar";
+import Footer from "./components/footer";
 
 export default function Home() {
   return (
-    <main>
+    <>
+      <Navbar />
+      <main>
       {/* Hero */}
       <section className="relative overflow-hidden bg-white min-h-[calc(100vh-4rem)] md:h-screen flex items-center pt-20 md:pt-16 pb-12 md:pb-0">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-10 grid md:grid-cols-2 gap-8 items-center w-full">
@@ -29,7 +33,7 @@ export default function Home() {
                 <i className="bi bi-arrow-right"></i>
               </Link>
               <Link
-                href="/login"
+                href="/root/auth/login"
                 className="inline-flex items-center gap-2 text-sm md:text-base font-bold text-[#1A1A1A] bg-white border border-[#DDE7E0] hover:border-[#1F7A4D] px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-all"
               >
                 <i className="bi bi-play-circle text-[#1F7A4D]"></i>
@@ -537,6 +541,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
