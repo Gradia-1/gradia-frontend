@@ -108,7 +108,7 @@ export default function Navbar() {
             Log In
           </Link>
           <Link
-            href="/signup"
+            href="/root/auth/signup"
             className="text-sm font-bold text-white bg-[#1F7A4D] hover:bg-[#16553A] px-6 py-2.5 rounded-full transition-all"
           >
             Sign Up
@@ -160,7 +160,7 @@ export default function Navbar() {
               Log In
             </Link>
             <Link
-              href="/signup"
+              href="/root/auth/signup"
               className="text-sm font-bold text-center text-white bg-[#1F7A4D] hover:bg-[#16553A] px-5 py-2.5 rounded-full transition-colors"
               onClick={() => setMenuOpen(false)}
             >
