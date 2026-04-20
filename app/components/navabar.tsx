@@ -63,7 +63,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-[#1F7A4D] transition-colors">
+            <Link href="/root/contact" className="hover:text-[#1F7A4D] transition-colors">
               Contact
             </Link>
           </li>
@@ -146,7 +146,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="" className="block hover:text-[#1F7A4D]" onClick={() => setMenuOpen(false)}>
+              <Link href="/root/contact" className="block hover:text-[#1F7A4D]" onClick={() => setMenuOpen(false)}>
                 Contact
               </Link>
             </li>

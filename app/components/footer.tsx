@@ -6,7 +6,7 @@ export default function Footer() {
     { label: "About", href: "" },
     { label: "Packages", href: "" },
     { label: "Pricing", href: "" },
-    { label: "Contact", href: "" },
+    { label: "Contact", href: "/root/contact" },
   ];
 
   const forSchoolsLinks = [
