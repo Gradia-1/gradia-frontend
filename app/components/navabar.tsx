@@ -58,7 +58,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="" className="hover:text-[#1F7A4D] transition-colors">
+            <Link href="/root/pricing" className="hover:text-[#1F7A4D] transition-colors">
               Pricing
             </Link>
           </li>
@@ -141,7 +141,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="" className="block hover:text-[#1F7A4D]" onClick={() => setMenuOpen(false)}>
+              <Link href="/root/pricing" className="block hover:text-[#1F7A4D]" onClick={() => setMenuOpen(false)}>
                 Pricing
               </Link>
             </li>
