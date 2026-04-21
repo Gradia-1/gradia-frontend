@@ -16,6 +16,8 @@ export default function ResetPassword() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const strength = getPasswordStrength(password);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (password.length < 8) {
@@ -85,36 +87,66 @@ export default function ResetPassword() {
             </p>
 
             <form className="mt-6 space-y-3" onSubmit={handleSubmit}>
-              <div className="relative">
-                <i className="bi bi-lock text-sm opacity-60 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="New password"
-                  className="w-full bg-white border border-[#DDE7E0] focus:border-[#1F7A4D] focus:ring-4 focus:ring-[#1F7A4D]/10 rounded-[10px] pl-11 pr-11 py-3 text-sm text-gray-700 placeholder:text-gray-300 outline-none transition-all"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? "Hide password" : "Show password"}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 hover:text-[#1A1A1A] cursor-pointer"
-                >
-                  <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
-                </button>
+              <div>
+                <div className="relative">
+                  <i className="bi bi-lock text-sm opacity-60 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="New password"
+                    className="w-full bg-white border border-[#DDE7E0] focus:border-[#1F7A4D] focus-visible:ring-4 focus-visible:ring-[#1F7A4D]/20 rounded-[10px] pl-11 pr-11 py-3 text-sm text-gray-700 placeholder:text-gray-300 outline-none transition-all"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 hover:text-[#1A1A1A] cursor-pointer"
+                  >
+                    <i className={`bi ${showPassword ? "bi-eye-slash" : "bi-eye"}`}></i>
+                  </button>
+                </div>
+                {password && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <div className="flex-1 flex gap-1">
+                      {[1, 2, 3, 4].map((i) => (
+                        <div
+                          key={i}
+                          className={`h-1 flex-1 rounded-full transition-colors ${
+                            i <= strength.level ? strength.barColor : "bg-gray-200"
+                          }`}
+                        ></div>
+                      ))}
+                    </div>
+                    <span className={`text-[10px] font-bold ${strength.textColor} min-w-[42px] text-right`}>
+                      {strength.label}
+                    </span>
+                  </div>
+                )}
               </div>
 
-              <div className="relative">
-                <i className="bi bi-lock-fill text-sm opacity-60 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  required
-                  value={confirm}
-                  onChange={(e) => setConfirm(e.target.value)}
-                  placeholder="Confirm new password"
-                  className="w-full bg-white border border-[#DDE7E0] focus:border-[#1F7A4D] focus:ring-4 focus:ring-[#1F7A4D]/10 rounded-[10px] pl-11 pr-4 py-3 text-sm text-gray-700 placeholder:text-gray-300 outline-none transition-all"
-                />
+              <div>
+                <div className="relative">
+                  <i className="bi bi-lock-fill text-sm opacity-60 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={confirm}
+                    onChange={(e) => setConfirm(e.target.value)}
+                    placeholder="Confirm new password"
+                    className={`w-full bg-white border rounded-[10px] pl-11 pr-4 py-3 text-sm text-gray-700 placeholder:text-gray-300 outline-none transition-all focus-visible:ring-4 ${
+                      confirm && confirm !== password
+                        ? "border-red-400 focus:border-red-500 focus-visible:ring-red-200"
+                        : "border-[#DDE7E0] focus:border-[#1F7A4D] focus-visible:ring-[#1F7A4D]/20"
+                    }`}
+                  />
+                </div>
+                {confirm && confirm !== password && (
+                  <p className="mt-1.5 text-xs text-red-600 font-medium pl-1">
+                    Passwords don&apos;t match
+                  </p>
+                )}
               </div>
 
               <p className="text-xs text-gray-500 pl-1">
@@ -147,4 +179,24 @@ export default function ResetPassword() {
       </div>
     </main>
   );
+}
+
+function getPasswordStrength(p: string): {
+  level: number;
+  label: string;
+  barColor: string;
+  textColor: string;
+} {
+  if (!p) return { level: 0, label: "", barColor: "", textColor: "" };
+  let score = 0;
+  if (p.length >= 8) score++;
+  if (p.length >= 12) score++;
+  if (/[A-Z]/.test(p) && /[a-z]/.test(p)) score++;
+  if (/[0-9]/.test(p)) score++;
+  if (/[^A-Za-z0-9]/.test(p)) score++;
+
+  if (score <= 2) return { level: 1, label: "Weak", barColor: "bg-red-400", textColor: "text-red-500" };
+  if (score === 3) return { level: 2, label: "Fair", barColor: "bg-yellow-400", textColor: "text-yellow-600" };
+  if (score === 4) return { level: 3, label: "Good", barColor: "bg-[#1F7A4D]/60", textColor: "text-[#1F7A4D]" };
+  return { level: 4, label: "Strong", barColor: "bg-[#1F7A4D]", textColor: "text-[#1F7A4D]" };
 }

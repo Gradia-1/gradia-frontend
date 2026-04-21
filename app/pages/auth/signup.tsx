@@ -30,6 +30,8 @@ export default function Signup() {
   const router = useRouter();
   const [role, setRole] = useState<Role>("chooser");
   const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedBanks, setSelectedBanks] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [province, setProvince] = useState("");
@@ -249,6 +251,9 @@ export default function Signup() {
                       <PasswordField
                         show={showPassword}
                         toggle={() => setShowPassword(!showPassword)}
+                        value={password}
+                        onChange={setPassword}
+                        showStrength
                       />
 
                       <div className="flex items-start gap-2 text-xs text-gray-600 bg-[#F9FAFB] border border-[#DDE7E0] rounded-[10px] p-3">
@@ -268,12 +273,22 @@ export default function Signup() {
                       <PasswordField
                         show={showPassword}
                         toggle={() => setShowPassword(!showPassword)}
+                        value={password}
+                        onChange={setPassword}
+                        showStrength
                       />
                       <PasswordField
                         show={showPassword}
                         toggle={() => setShowPassword(!showPassword)}
                         placeholder="Confirm password"
+                        value={confirmPassword}
+                        onChange={setConfirmPassword}
                       />
+                      {confirmPassword && confirmPassword !== password && (
+                        <p className="text-xs text-red-600 font-medium pl-1 -mt-1">
+                          Passwords don&apos;t match
+                        </p>
+                      )}
                     </>
                   )}
 
@@ -588,7 +603,7 @@ function InputField({
         type={type}
         required
         placeholder={placeholder}
-        className="w-full bg-white border border-[#DDE7E0] focus:border-[#1F7A4D] focus:ring-4 focus:ring-[#1F7A4D]/10 rounded-[10px] pl-11 pr-4 py-3 text-sm text-gray-700 placeholder:text-gray-300 outline-none transition-all"
+        className="w-full bg-white border border-[#DDE7E0] focus:border-[#1F7A4D] focus-visible:ring-4 focus-visible:ring-[#1F7A4D]/20 rounded-[10px] pl-11 pr-4 py-3 text-sm text-gray-700 placeholder:text-gray-300 outline-none transition-all"
       />
     </div>
   );
@@ -598,28 +613,75 @@ function PasswordField({
   show,
   toggle,
   placeholder = "Password",
+  value,
+  onChange,
+  showStrength,
 }: {
   show: boolean;
   toggle: () => void;
   placeholder?: string;
+  value?: string;
+  onChange?: (v: string) => void;
+  showStrength?: boolean;
 }) {
+  const strength = showStrength && value ? getPasswordStrength(value) : null;
   return (
-    <div className="relative">
-      <i className="bi bi-lock text-sm opacity-60 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
-      <input
-        type={show ? "text" : "password"}
-        required
-        placeholder={placeholder}
-        className="w-full bg-white border border-[#DDE7E0] focus:border-[#1F7A4D] focus:ring-4 focus:ring-[#1F7A4D]/10 rounded-[10px] pl-11 pr-11 py-3 text-sm text-gray-700 placeholder:text-gray-300 outline-none transition-all"
-      />
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={show ? "Hide password" : "Show password"}
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 hover:text-[#1A1A1A] cursor-pointer"
-      >
-        <i className={`bi ${show ? "bi-eye-slash" : "bi-eye"}`}></i>
-      </button>
+    <div>
+      <div className="relative">
+        <i className="bi bi-lock text-sm opacity-60 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+        <input
+          type={show ? "text" : "password"}
+          required
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange ? (e) => onChange(e.target.value) : undefined}
+          className="w-full bg-white border border-[#DDE7E0] focus:border-[#1F7A4D] focus-visible:ring-4 focus-visible:ring-[#1F7A4D]/20 rounded-[10px] pl-11 pr-11 py-3 text-sm text-gray-700 placeholder:text-gray-300 outline-none transition-all"
+        />
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={show ? "Hide password" : "Show password"}
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 hover:text-[#1A1A1A] cursor-pointer"
+        >
+          <i className={`bi ${show ? "bi-eye-slash" : "bi-eye"}`}></i>
+        </button>
+      </div>
+      {strength && (
+        <div className="mt-2 flex items-center gap-2">
+          <div className="flex-1 flex gap-1">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className={`h-1 flex-1 rounded-full transition-colors ${
+                  i <= strength.level ? strength.barColor : "bg-gray-200"
+                }`}
+              ></div>
+            ))}
+          </div>
+          <span className={`text-[10px] font-bold ${strength.textColor} min-w-[42px] text-right`}>
+            {strength.label}
+          </span>
+        </div>
+      )}
     </div>
   );
+}
+
+function getPasswordStrength(p: string): {
+  level: number;
+  label: string;
+  barColor: string;
+  textColor: string;
+} {
+  let score = 0;
+  if (p.length >= 8) score++;
+  if (p.length >= 12) score++;
+  if (/[A-Z]/.test(p) && /[a-z]/.test(p)) score++;
+  if (/[0-9]/.test(p)) score++;
+  if (/[^A-Za-z0-9]/.test(p)) score++;
+
+  if (score <= 2) return { level: 1, label: "Weak", barColor: "bg-red-400", textColor: "text-red-500" };
+  if (score === 3) return { level: 2, label: "Fair", barColor: "bg-yellow-400", textColor: "text-yellow-600" };
+  if (score === 4) return { level: 3, label: "Good", barColor: "bg-[#1F7A4D]/60", textColor: "text-[#1F7A4D]" };
+  return { level: 4, label: "Strong", barColor: "bg-[#1F7A4D]", textColor: "text-[#1F7A4D]" };
 }
