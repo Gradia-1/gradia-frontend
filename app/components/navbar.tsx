@@ -47,13 +47,8 @@ export default function Navbar() {
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex items-center gap-8 text-sm font-bold text-[#1A1A1A]">
           <li>
-            <Link href="/about" className="hover:text-[#1F7A4D] transition-colors">
+            <Link href="/root/about" className="hover:text-[#1F7A4D] transition-colors">
               About
-            </Link>
-          </li>
-          <li>
-            <Link href="" className="hover:text-[#1F7A4D] transition-colors">
-              Packages
             </Link>
           </li>
           <li>
@@ -129,13 +124,8 @@ export default function Navbar() {
         <div className="md:hidden bg-white border-t border-[#DDE7E0] px-6 py-4">
           <ul className="flex flex-col gap-4 text-sm font-medium text-gray-700">
             <li>
-              <Link href="/about" className="block hover:text-[#1F7A4D]" onClick={() => setMenuOpen(false)}>
+              <Link href="/root/about" className="block hover:text-[#1F7A4D]" onClick={() => setMenuOpen(false)}>
                 About
-              </Link>
-            </li>
-            <li>
-              <Link href="" className="block hover:text-[#1F7A4D]" onClick={() => setMenuOpen(false)}>
-                Packages
               </Link>
             </li>
             <li>

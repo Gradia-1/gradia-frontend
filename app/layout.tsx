@@ -16,7 +16,7 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Gradia",
+  title: "Gradia | unifies student records, academics, finance, communication",
   description: "Gradia is a student grade management system built with Next.js and PostgreSQL. It provides an intuitive interface for teachers to manage student grades efficiently.",
 };
 
