@@ -405,7 +405,7 @@ export default function Home() {
                 </li>
               </ul>
               <Link
-                href="/contact"
+                href="/root/contact"
                 className="mt-7 w-full inline-flex items-center justify-center gap-2 text-sm font-bold text-[#1A1A1A] bg-white border border-[#DDE7E0] hover:border-[#1F7A4D] px-5 py-3 rounded-full transition-colors"
               >
                 Contact Sales
@@ -524,7 +524,7 @@ export default function Home() {
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/demo"
+                  href="/root/contact"
                   className="inline-flex items-center gap-2 text-sm md:text-base font-bold text-white bg-[#1F7A4D] hover:bg-[#16553A] px-6 py-3 rounded-full transition-colors"
                 >
                   Request a Demo
