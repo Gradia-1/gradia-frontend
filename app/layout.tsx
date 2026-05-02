@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, DM_Serif_Display } from "next/font/google";
 import AiChatWidget from "./components/ai-chat-widget";
+import CookieConsentBanner from "./components/cookie-consent-banner";
 import "./globals.css";
 
 const inter = Inter({
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${dmSerif.variable} ${inter.className} antialiased`}>
         {children}
         <AiChatWidget />
+        <CookieConsentBanner />
       </body>
     </html>
   );
