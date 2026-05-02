@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, DM_Serif_Display } from "next/font/google";
+import AiChatWidget from "./components/ai-chat-widget";
 import "./globals.css";
 
 const inter = Inter({
@@ -35,6 +36,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${dmSerif.variable} ${inter.className} antialiased`}>
         {children}
+        <AiChatWidget />
       </body>
     </html>
   );

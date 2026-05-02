@@ -4,29 +4,29 @@ import Link from "next/link";
 export default function Footer() {
   const productLinks = [
     { label: "About", href: "/root/about" },
-    { label: "Packages", href: "" },
-    { label: "Pricing", href: "" },
+    { label: "Packages", href: "/root/pricing" },
+    { label: "Pricing", href: "/root/pricing" },
     { label: "Contact", href: "/root/contact" },
   ];
 
   const forSchoolsLinks = [
-    { label: "Head Teachers", href: "" },
-    { label: "Teachers", href: "" },
-    { label: "Parents", href: "" },
-    { label: "Students", href: "" },
+    { label: "Head Teachers", href: "/for-schools/head-teachers" },
+    { label: "Teachers", href: "/for-schools/teachers" },
+    { label: "Parents", href: "/for-schools/parents" },
+    { label: "Students", href: "/for-schools/students" },
   ];
 
   const resourceLinks = [
-    { label: "Help Center", href: "" },
-    { label: "Documentation", href: "" },
-    { label: "Support", href: "" },
-    { label: "Status", href: "" },
+    { label: "Help Center", href: "/resources/help" },
+    { label: "Documentation", href: "/resources/documentation" },
+    { label: "Support", href: "/resources/support" },
+    { label: "Status", href: "/resources/status" },
   ];
 
   const legalLinks = [
     { label: "Privacy", href: "/root/privacy" },
-    { label: "Terms", href: "" },
-    { label: "Cookies", href: "" },
+    { label: "Terms", href: "/root/terms" },
+    { label: "Cookies", href: "/root/cookies" },
   ];
 
   const socials = [
@@ -51,16 +51,27 @@ export default function Footer() {
               academics, finance, and communication in one place.
             </p>
             <div className="mt-5 flex items-center gap-3">
-              {socials.map((s) => (
-                <Link
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
-                  className="w-9 h-9 rounded-full border border-[#DDE7E0] flex items-center justify-center text-gray-600 hover:text-[#1F7A4D] hover:border-[#1F7A4D] transition-colors"
-                >
-                  <i className={`bi ${s.icon}`}></i>
-                </Link>
-              ))}
+              {socials.map((s) =>
+                s.href ? (
+                  <Link
+                    key={s.label}
+                    href={s.href}
+                    aria-label={s.label}
+                    className="w-9 h-9 rounded-full border border-[#DDE7E0] flex items-center justify-center text-gray-600 hover:text-[#1F7A4D] hover:border-[#1F7A4D] transition-colors"
+                  >
+                    <i className={`bi ${s.icon}`}></i>
+                  </Link>
+                ) : (
+                  <span
+                    key={s.label}
+                    title="Coming soon"
+                    aria-label={`${s.label} (coming soon)`}
+                    className="w-9 h-9 rounded-full border border-[#DDE7E0] flex items-center justify-center text-gray-400 cursor-not-allowed opacity-70"
+                  >
+                    <i className={`bi ${s.icon}`}></i>
+                  </span>
+                )
+              )}
             </div>
           </div>
 
